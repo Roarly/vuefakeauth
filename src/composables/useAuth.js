@@ -4,9 +4,9 @@ const isAuthenticated = ref(false);
 
 const user = ref("");
 
-const users = [
+const usersFromDB = [
 {username: "admin", password: "admin", name: "Administrator"},
-{username: "aquint31", password: "abel123", name: "Administrator"}
+{username: "aquint31", password: "abel123", name: "Administrator"},
 ];
 
 const useAuth = () => {
@@ -15,9 +15,9 @@ const useAuth = () => {
         (user) => user.username === username && user.password === password
       );
   
-      if (userFromDB) {
+      if (user) {
         isAuthenticated.value = true;
-        user.value = userFromDB.name;
+        user.value = user.name;
       }
     };
   
