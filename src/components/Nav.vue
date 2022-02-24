@@ -1,6 +1,12 @@
 <script setup>
+import { useRouter } from "vue-router";
 import useAuth from "../composables/useAuth";
-const {isAuthenticated, logout} = useAuth();
+const { isAuthenticated, logout } = useAuth();
+const router = useRouter();
+const loggingOut = () => {
+  logout();
+  router.push("/");
+};
 </script>
 
 
@@ -18,7 +24,7 @@ const {isAuthenticated, logout} = useAuth();
                 <div v-else class="flex">
                 
                  <router-link  to="/secret"><li class="px-5 py-4 bg-gray-300 hover:cursor-pointer hover:bg-slate-500 hover:text-white">Secret</li></router-link>
-                 <button  @click="logout"><li class="px-5 py-4 bg-gray-400 hover:cursor-pointer hover:bg-slate-500 hover:text-white rounded-r-2xl">Logout</li></button>
+                 <button  @click="loggingOut"><li class="px-5 py-4 bg-gray-400 hover:cursor-pointer hover:bg-slate-500 hover:text-white rounded-r-2xl">Logout</li></button>
                 </div>
             </ul>
         </nav>
